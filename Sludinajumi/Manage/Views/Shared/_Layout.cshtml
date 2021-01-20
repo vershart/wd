@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+@{
+    string Selected(string controllerName) {
+        if (ViewContext.RouteData.Values["controller"].ToString() == controllerName)
+            return "w3-theme-l1";
+        else
+            return $"{ViewContext.RouteData.Values["controller"].ToString()} + {controllerName}";
+    }
+}
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sludinājumu portāls - Pārvalde - @ViewData["Title"]</title>
+        <meta name="theme-color" content="#006699"/>
+        <link rel="stylesheet" type="text/css" href="/styles/w3.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/modal.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+        <script type="text/javascript" src="/scripts/Manage/main.js"></script>
+        <style>
+            .fa { text-align: center; }
+            li, tr.nav, .w3-card { cursor: pointer; }
+            ul a { text-decoration: none; }
+            #editCategoryLink, #removeCategoryLink { visibility: hidden; }
+        </style>
+    </head>
+    <body>
+        <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left w3-large w3-theme-d5" style="width:250px;" id="manageSidebar">
+            <button class="w3-bar-item w3-button w3-large w3-hide-large" id="sidebarCloseButton">Aizvērt &times;</button>
+            <a asp-controller="Dashboard" asp-action="Index" class="w3-bar-item w3-button @Selected("Dashboard")">Pārvalde</a>
+            <a asp-controller="Account" asp-action="Index" class="w3-bar-item w3-button @Selected("Account")">Lietotāji un grupas</a>
+            <a asp-controller="Category" asp-action="Index" asp-route-UrlTitle="All" class="w3-bar-item w3-button @Selected("Category")">Kategorijas</a>
+            <a asp-controller="CategoryProperties" asp-action="Index" asp-route-UrlTitle="All" class="w3-bar-item w3-button @Selected("CategoryProperties")">Īpašības</a>
+        </div>
+
+        <main class="w3-main w3-animate-right" style="margin-left:250px;">
+            <div class="w3-theme-d2">
+                <button class="w3-button w3-theme-d2 w3-xlarge w3-hide-large" id="manageSidebarHamburger">&#9776;</button>
+                <div class="w3-container">
+                    <h1>@ViewData["Title"]</h1>
+                </div>
+            </div>
+            @RenderBody()
+        </main>
+    </body>
+</html>

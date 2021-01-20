@@ -1,0 +1,35 @@
+@model Sludinajumi.Models.TemporaryAccountDataViewModel;
+<h2>Success!</h2>
+<p>
+    Jūs esat veiksmīgi reģistrēts sistēmā! [DEVELOPMENT MODE]
+</p>
+<p>
+    Jūsu piekļūves dati:
+</p>
+<ul>
+    <li>E-pasts: @Model.ApplicationUserData.Email</li>
+    <li onclick="CopyPassword();">
+        Parole:
+        <span><code>@Model.Password</code><span>
+        <span id="res" style="cursor: pointer">(Noklikšķināt, lai iekopēt!)</span>
+    </li>
+    <input id="pwd" type="text" style="border: 0px solid #000; opacity: 0" value="@Model.Password" />
+</ul>
+<a asp-controller="Home" asp-action="Index">Pariet uz sākumlapu!</a>
+<a asp-area="Manage" asp-controller="Dashboard" asp-action="Index">Pariet uz administratora lapu!</a>
+<script>
+    function CopyPassword() {
+        var res = document.getElementById("res");
+        document.getElementById("pwd").select();
+        try {
+            document.execCommand('copy');
+            res.style.color = "green";
+            res.innerText = "Iekopēts!";
+        }
+        catch (err) {
+            res.style.color = "red";
+            res.innerText = "[NOT SUPPORTED] (Izmantot Ctrl+C)";            
+        }
+
+    }
+</script>

@@ -1,0 +1,42 @@
+@using Sludinajumi.Api.Models;
+@using System.Collections.Generic;
+@using System.Linq;
+@model Sludinajumi.Api.Models.Ad;
+<h2>@Model.Title</h2>
+<h4>Kategorija: @Model.Category.Title</h4>
+<hr />
+<h4>Sludinājuma teksts:</h4>
+<p>@Model.Description</p>
+<h4>Atrašanas vieta:</h4>
+<p>@Model.ItemLocation</p>
+<hr />
+<h4>Kontaktpersona</h4>
+<adress>
+    Vārds un uzvārds: @Model.CreatedBy.FullName</adress><br />
+    E-pasts: <a href="mailto:@Model.CreatedBy.Email?Subject=Jūsu sludinājums @Model.Title portālā">
+        @Model.CreatedBy.Email</a><br />
+    Telefona numurs: <a href="tel:+37120043217">
+        @@Model.CreatedBy.PhoneNumber</a><br />
+</adress>
+<p>Izveidots: @Model.CreatedAt</p>
+<hr />
+<h3>Darbības</h3>
+<a href="/Categories/@Model.Category.Title/Edit/@Model.Id">Rediģēt!</a>
+<a asp-action="Remove" asp-route-AdId="@Model.Id">Dzēst!</a>
+<h3>Citi sludinājumi šīnī kategorijā</h3>
+@if (ViewBag.relatedCount == 0)
+{
+    <p>Pagaidām, tas ir tikai viens sludinājums šīnī kategorijā... ;(</p>
+}
+<ul class="w3-ul w3-hoverable w3-striped">
+@foreach (Ad ad in ViewBag.relatedAds)
+{
+    <a asp-controller="Ad" asp-action="ShowAd" asp-route-Category="@ad.Category.Title" asp-route-AdId="@ad.Id">
+        <li>
+            <h3>@ad.Title</h3>
+            <h4>Kategorija: @ad.Category.Title</h4>
+            <p>@ad.Description</p>
+        </li>
+    </a>
+}
+</ul>

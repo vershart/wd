@@ -1,0 +1,124 @@
+@model Sludinajumi.Models.UserViewModel
+@using Sludinajumi.Api.Models
+<h2>Mans profils</h2>
+<table class="w3-table w3-table-all">
+    <tr>
+        <th>Lietotāja vārds</th>
+        <td>@Model.AccountInformation.Email</td>
+    </tr>
+    <tr>
+        <th>Vārds</th>
+        <td>@Model.AccountInformation.FirstName</td>
+    </tr>
+    <tr>
+        <th>Uzvārds</th>
+        <td>@Model.AccountInformation.LastName</td>
+    </tr>
+    <tr>
+        <th>Dzimšanas datums</th>
+        <td>@Model.AccountInformation.BirthDate</td>
+    </tr>
+    <tr>
+        <th>Reģistrācijas datums</th>
+        <td>@Model.AccountInformation.RegistrationDate</td>
+    </tr>
+    <tr>
+        <th>Lietotāju grupa</th>
+        <td>@Model.Role</td>
+    </tr>
+    <tr>
+        <th>Sludinājumu skaits</th>
+        <td>@Model.AdsCount</td>
+    </tr>
+</table>
+<hr />
+<div class="w3-section w3-center">
+    <button class="w3-btn w3-indigo" onclick="document.getElementById('changeEmailModal').style.display='block'">
+        <i class="fa fa-pencil"></i>
+        Rediģēt e-pastu
+    </button>
+    <button class="w3-btn w3-green" onclick="document.getElementById('changePasswordModal').style.display='block'">
+        <i class="fa fa-key"></i>
+        Izmainīt paroli
+    </button>
+
+    <button class="w3-btn w3-red" onclick="document.getElementById('removeAccountModal').style.display='block'">
+        <i class="fa fa-trash"></i>
+        Izdzēst kontu
+    </button>
+</div>
+<hr />
+
+<div id="changeEmailModal" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top">
+        <div class="w3-container w3-theme-l4">
+            <h4 style="padding: 0px; margin: 4.5px">Rediģēt e-pastu</h4>
+            <span onclick="document.getElementById('changeEmailModal').style.display='none'" class="w3-button w3-display-topright w3-hover-red">&times;</span>
+        </div>
+        <form method="post" asp-action="ChangeEmail" class="w3-container">
+            <p style="text-align: justify">
+                Ja Jums ir mainījies e-pasts, Jūs varat to izmainīt šeit.
+            </p> 
+            <p style="text-align: justify">Jauns e-pasts:</p>
+            <input type="hidden" name="userId" value="@Model.AccountInformation.Id" />
+            <input type="email" name="newEmail" placeholder="@Model.AccountInformation.Email" class="w3-input w3-section" />
+            <div class="w3-bar w3-section" style="text-align: right">
+                <span onclick="document.getElementById('changeEmailModal').style.display='none'" asp-action="Delete" class="w3-button w3-theme"><i class="fa fa-remove"></i>  Atcelt</span>
+                <input type="submit" class="w3-button w3-green" value="Saglabāt!" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="changePasswordModal" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top">
+        <div class="w3-container w3-theme-l4">
+            <h4 style="padding: 0px; margin: 4.5px">Mainīt paroli</h4>
+            <span onclick="document.getElementById('changePasswordModal').style.display='none'" class="w3-button w3-display-topright w3-hover-red">&times;</span>
+        </div>
+        <form method="post" asp-action="ChangePassword" class="w3-container" style="text-align: justify">
+            <p>
+                Ja Jūs velāties izmainīt savu paroli, Jūs varat to izdarīt šeit.
+            </p>
+            <input type="hidden" name="userId" value="@Model.AccountInformation.Id" />
+            <label>Veca parole</label>
+            <input type="password" name="oldPassword" placeholder="******" class="w3-input w3-section" />
+            <label>Jauna parole</label>
+            <input type="password" name="newPassword" placeholder="******" class="w3-input w3-section" />
+            <div class="w3-bar w3-section" style="text-align: right">
+                <span onclick="document.getElementById('changePasswordModal').style.display='none'" asp-action="Delete" class="w3-button w3-theme"><i class="fa fa-remove"></i>  Atcelt</span>
+                <input type="submit" class="w3-button w3-green" value="Saglabāt!" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="removeAccountModal" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top">
+        <header class="w3-container w3-theme-l4">
+            <h4 style="padding: 0px; margin: 4.5px">Dzēst lietotāja kontu</h4>
+            <span onclick="document.getElementById('removeAccountModal').style.display='none'" class="w3-button w3-display-topright w3-hover-red">&times;</span>
+        </header>
+        <div class="w3-container">
+            <p style="text-align: justify">
+                Vai Jūs tiešām velāties izdzest savu lietotāja kontu? Visi Jūsu dati neatgriezeniski pazūdīs!
+            </p> 
+            <footer class="w3-bar w3-section" style="text-align: right">
+                <span onclick="document.getElementById('removeAccountModal').style.display='none'" asp-action="Delete" class="w3-button w3-theme"><i class="fa fa-arrow-left"></i>  Atcelt</span>
+                <a asp-action="RemoveAccount" type="submit" class="w3-button w3-red"><i class="fa fa-trash"></i>  Izdzēst!</a>
+            </footer>
+        </div>
+    </div>
+</div>
+
+<ul class="w3-ul">
+@foreach (Ad ad in @Model.Ads)
+{
+    <li>
+        <h4>
+            @ad.Title kategorijā @ad.CategoryId
+        </h4>
+        <p>@ad.Description</p>
+    </li>
+}
+</ul>

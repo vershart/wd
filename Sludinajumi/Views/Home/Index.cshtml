@@ -1,0 +1,45 @@
+@using Sludinajumi.Api.Models;
+@model Sludinajumi.Models.HomeViewModel;
+@{
+    int index = 0;
+}
+<div>
+    @if (@Model.CategoriesCount > 0)
+    {
+        <h2>Kategorijas</h2>
+    }
+    @while (index < @Model.CategoriesCount)
+    {
+        <div class="w3-row w3-row-padding w3-margin-top" style="width: 100%; box-sizing: border-box; padding: 0px; margin: 0px">
+        @for (int i = 0; i < 3; i++)
+        {
+            @if (index < @Model.CategoriesCount) {
+                <div class="w3-col w3-container s4 w3-cell-middle w3-mobile">
+                    <div class="w3-display-container category">
+                        <img src="@Model.Categories[index].ImagePath" class="category-image" style="width: 100%; height: 100%" />
+                        <a asp-controller="Ad" asp-action="ShowCategory" asp-route-UrlTitle="@Model.Categories[index].UrlTitle" class="category-overlay">
+                            <div class="text">
+                                @Model.Categories[index].Title
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+            index++;
+        }
+        </div>
+    }
+    <h2>Pēdējie sludinājumi</h2>
+    <ul class="w3-ul w3-hoverable w3-striped">
+    @foreach (Ad ad in @Model.LatestAds)
+    {
+        <a asp-controller="Ad" asp-action="ShowAd" asp-route-Category="@ad.Category.Title" asp-route-AdId="@ad.Id">
+            <li>
+                <h3>@ad.Title</h3>
+                <h4>Kategorija: @ad.Category.Title</h4>
+                <p>@ad.Description</p>
+            </li>
+        </a>
+    }
+    </ul>
+</div>

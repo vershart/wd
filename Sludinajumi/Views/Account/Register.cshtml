@@ -1,0 +1,108 @@
+<form method="post" asp-controller="Account" asp-action="Register" class="w3-section">
+
+	<!-- Region: Lietotāja datnes -->
+		<header class="w3-container w3-theme w3-section">
+			<h1>@ViewData["Title"]</h1>
+			<p>Aizpildiet zemāk redzāmo anketu par sevi</p>
+		</header>
+
+		@Html.ValidationSummary()
+		
+		<hr />
+
+		<label for="first-name">Vārds</label>
+		<input type="text" name="firstName" id="first-name"
+			placeholder="Jūsu vārds"
+			class="w3-input"
+			required="required" />
+
+		<label for="last-name">Uzvārds</label>
+		<input type="text" name="lastName" id="last-name"
+			placeholder="Jūsu uzvārds"
+			class="w3-input"
+			required="required" />
+
+		<label for="birth-date">Dzimšanas datums</label>
+		<input type="date" name="birthDate" id="birth-date"
+			class="w3-input"
+			required="required"  />
+
+		<label for="email">E-pasts</label>
+		<input type="email" name="email" id="email"
+			placeholder="Jūsu e-pasts"
+			class="w3-input"
+			required="required" />
+
+		<label for="password">Parole</label>
+		<input type="password" name="password" id="password"
+			placeholder="*******"
+			class="w3-input"
+			required="required" />
+
+		<label for="confirm-password">Parole (atkārtoti)</label>
+		<input type="password" name="confirmPassword" id="confirm-password"
+			placeholder="*******"
+			class="w3-input" />
+
+		
+		<!-- <input type="checkbox" id="isOrganization" 
+			[checked]="isOrganization"
+			(change)="isOrganization = !isOrganization" />
+		<label for="isOrganization">Apstiprinu, kā neesmu organizācijas pārstavis</label> -->
+
+	</div>
+
+	<!-- Regions: Organizācijas datnes
+	<div *ngIf="isOrganization" class="w3-container w3-half">
+
+		<div class="w3-container w3-teal">
+			<h2>Organizācijas datnes</h2>
+			<p>Aizpildiet zemāk redzāmo anketu par savu organizāciju</p>
+		</div>
+
+		<label for="title">Organizācijas nosaukums</label>
+		<input type="text" name="title" id="title"
+			placeholder="Organizācijas nosaukums"
+			class="w3-input"
+			required="required"
+			ngModel />
+
+		<label for="type">Organizācijas tips</label>
+		<select name="type" id="type" class="w3-input" required="required">
+			<option value="1">Akcīju sabiedrība</option>
+			<option value="2">Pilnsabiedrība</option>
+			<option value="3" selected="selected">Sabiedrība ar ierobežotu atbildību</option>
+			<option value="4">Individuālais komersants</option>
+		</select>
+
+		<label for="registration-number">Reģistrācijas numurs</label>
+		<input type="text" name="registrationNumber" id="registration-number"
+			placeholder="40003052790"
+			class="w3-input"
+			required="required"
+			ngModel />
+
+		<label for="legal-adress">Juridiskā adrese</label>	
+		<input type="text" name="legalAdress" id="legal-adress"
+			placeholder="Audēju iela 209c, Rīga, LV-1063"
+			class="w3-input"
+			required="required"
+			ngModel />
+
+		<label for="registration-date">Reģistrācijas datums</label>	
+		<input type="date" name="registrationDate" id="registration-date"
+			class="w3-input"
+			required="required"
+			ngModel />
+
+		<label for="website">Weblapa</label>	
+		<input type="text" name="website" id="website"
+			placeholder="https://"
+			class="w3-input"
+			ngModel />		
+
+	</div> -->
+
+	<input type="submit" class="w3-btn w3-blue w3-section" value="Reģistrēties!" /> 
+
+</form>

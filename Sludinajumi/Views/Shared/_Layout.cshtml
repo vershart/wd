@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html style="min-height: 100vh !important">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sludinājumu portāls - @ViewData["Title"]</title>
+        <link rel="stylesheet" type="text/css" href="/styles/w3.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/main.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-indigo.css">
+    </head>
+    <body style="min-height: 100vh !important">
+        <header class="w3-row w3-padding w3-theme-d2 w3-xlarge">
+
+            <div class="w3-quarter">
+                <div class="w3-bar">
+                    <a class="w3-bar-item w3-button" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i></a>
+                    <span class="w3-bar-item" style="color: white">Sludinājumi</span>
+                </div>
+            </div>
+
+            <div class="w3-half">
+                <input type="search"
+                    placeholder="Es meklēju..."
+                    class="w3-white w3-border-0 w3-padding"
+                    style="width:100%">
+            </div>
+
+            <div class="w3-quarter">
+                <div class="w3-bar w3-xlarge">
+                    <a href="#" class="w3-bar-item w3-button w3-left"><i class="fa fa-search"></i></a>
+                    @await Html.PartialAsync("_LoginPartial")
+                </div>
+            </div>
+        </header>
+
+        <nav class="w3-bar w3-theme">
+            <a asp-area="" asp-controller="Ad" asp-action="New" class="w3-bar-item w3-button w3-hover-green">Jauns sludinājums</a>
+            <a href="/swagger/" class="w3-bar-item w3-button w3-hover-green">API dokumentācija</a>
+            <a asp-area="" asp-controller="Home" asp-action="About" class="w3-bar-item w3-button w3-hover-green">Par projektu</a>
+            <a asp-controller="Home" asp-action="Contacts" class="w3-bar-item w3-button w3-hover-green">Kontakti</a>
+        </nav>
+        
+        <main class="w3-container">
+            @RenderBody()
+        </main>
+
+        <!-- <footer class="w3-container w3-theme-d3 w3-center">
+            <blockquote>
+            <p>
+                <span class="w3-xxlarge">&#10077;</span>
+                <br />
+                <i class="w3-large">"Make it as simple as possible, but not simpler."</i>
+            </p>
+            <p>Albert Einstein</p>
+            </blockquote>
+        </footer> -->
+
+    </body>
+</html>

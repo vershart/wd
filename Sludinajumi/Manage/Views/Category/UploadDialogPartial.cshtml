@@ -1,0 +1,73 @@
+@using Sludinajumi.Manage.Models;
+<div class="w3-container w3-section">
+    <!-- <label asp-for="ImagePath"></label>
+    <div class="w3-row w3-border">
+        <input id="selectImageInput"
+            asp-for="ImagePath"
+            class="w3-input w3-threequarter w3-border-0"
+            readonly="readonly"
+            type="text"
+            placeholder="Attēls" />
+        <button class="w3-theme w3-btn w3-quarter" onclick="document.getElementById('selectImageModal').style.display = 'block';">Izvēlēties attēlu</button>
+    </div> -->
+
+    <div id="uploadImageModal" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top">
+            <div class="w3-container w3-theme-l4">
+                <h4 style="padding: 0px; margin: 4px">Augšupielādēt attēlu</h4>
+                <span onclick="document.getElementById('uploadImageModal').style.display='none'" class="w3-button w3-display-topright w3-hover-red">&times;</span>
+            </div>
+            <div class="w3-container">
+                <p style="text-align: justify">
+                    Lai augšupielādēt attēlu, Jums ir jāizvēlas failu Jusu ierīce, kas ir [jpeg, jpg png] formātā. Tad ievadiet 
+                    faila nosaukumu un spiediet "Augšupielādēt!"
+                </p>
+                <p class="w3-text-red" id="uploadImageForm_Errors"></p>
+                <form onsubmit="return uploadImageFormSubmit();" id="uploadImageForm" method="post" asp-action="UploadImage">
+                    <label for="uploadImageForm_FileInput">Attēls:</label>
+                    <input type="file" id="uploadImageForm_FileInput"
+                        class="w3-input"
+                        accept="image/png, image/jpeg, image/jpg"
+                        autofocus="autofocus" />
+                    <label for="uploadImageForm_FileNameInput">Nosaukums:</label>
+                    <input type="text" id="uploadImageForm_FileNameInput"
+                        class="w3-input"
+                        maxlength="30"
+                        minlength="3"
+                        placeholder="Piemēram, all_ads" />
+                    <div class="w3-bar w3-section" style="text-align: right">
+                        <button type="submit" class="w3-button w3-green"><i class="fa fa-check"></i>  Augšupielādēt!</button>
+                        <span onclick="document.getElementById('uploadImageModal').style.display='none'" class="w3-button w3-theme"><i class="fa fa-remove"></i>  Atcelt</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="selectImageModal" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top">
+            <div class="w3-container w3-theme-l4">
+                <h4 style="padding: 0px; margin: 4px">Augšupielādēt attēlu</h4>
+                <span onclick="document.getElementById('selectImageModal').style.display='none'" class="w3-button w3-display-topright w3-hover-red">&times;</span>
+            </div>
+            <div class="w3-container">
+                <p style="text-align: justify">Uzspiediet uz attēla, lai to izvēlētos:</p>
+                <div style="overflow-y: scroll; height: 250px" class="w3-card-4">
+                    <ul class="w3-ul w3-stripped w3-hoverable" id="selectImageList">
+                    @foreach (PictureInfoModel file in @Model)
+                    {
+                        <li>
+                            @file.Name
+                        </li>
+                    }
+                    </ul>
+                </div>
+                <button id="selectImageModal_Upload" class="w3-btn w3-theme-d2 w3-section" style="width: 100%">Augšupielādēt attēlu</button>
+            </div>
+            <div class="w3-bar w3-section w3-container" style="text-align: right">
+                <button id="selectImage_Submit" class="w3-button w3-green w3-section" disabled="true"><i class="fa fa-check"></i>  Izvēlēties!</button>
+                <span onclick="document.getElementById('selectImageModal').style.display='none'" class="w3-button w3-theme"><i class="fa fa-remove"></i>  Atcelt</span>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sludinajumi</name>
+    </assembly>
+    <members>
+        <member name="M:Sludinajumi.Api.Auth.JwtFactory.ToUnixEpochDate(System.DateTime)">
+            <returns>Date converted to seconds since Unix epoch (Jan 1, 1970, midnight UTC).</returns>
+        </member>
+        <member name="M:Sludinajumi.Api.Controllers.AdController.GetAll">
+            <summary>
+            Atrast un izvadīt visus sludinājumus
+            </summary>
+            <returns>Sludinājumu saraksts JSON formātā</returns>
+        </member>
+        <member name="T:Sludinajumi.Api.Models.AdProperty">
+            <summary>
+            Sludinājuma aprakstamā objekta īpašība
+            </summary>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.AdProperty.AdId">
+            <summary>
+            Sludinājuma identifikators (FK)
+            </summary>
+            <returns>Identifikators datu bāzē</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.AdProperty.Ad">
+            <summary>
+            Sludinājuma saite
+            </summary>
+            <returns>Sludinājuma objekta saiti</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.AdProperty.PropertyId">
+            <summary>
+            Īpašības identifikators (FK)
+            </summary>
+            <returns>Identifikatoru datu bāzē</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.AdProperty.Property">
+            <summary>
+            Īpašības saite
+            </summary>
+            <returns>Īpašības objekta saiti</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.AdProperty.Value">
+            <summary>
+            Īpašības vērtība
+            </summary>
+            <returns>Īpašības vērtību</returns>
+        </member>
+        <member name="T:Sludinajumi.Api.Models.Property">
+            <summary>
+            Objekta īpašība
+            </summary>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.Property.Id">
+            <summary>
+            Īpašības identifikators datubāzē
+            </summary>
+            <returns>īpašības identifikators</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.Property.NameId">
+            <summary>
+            Norāde uz īpašības nosaukumu (tulkojuma struktūru)
+            </summary>
+            <returns>norādi uz īpašības nosaukumu</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.Property.DescriptionId">
+            <summary>
+            Norāde uz īpašības aprakstu (tulkojuma struktūru)
+            </summary>
+            <returns>norādi uz īpašības aprakstu</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.Property.IsRequired">
+            <summary>
+            Norāda uz to, ka īpašība ir obligāta aizpildīšanai sludinājuma izveidošanas procesā
+            </summary>
+            <returns>īpašība ir vai nav obligāta aizpildīšanai</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.Property.Name">
+            <summary>
+            Īpašības nosaukums
+            </summary>
+            <returns>īpašības nosaukumu</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.Property.Description">
+            <summary>
+            Īpašības apraksts
+            </summary>
+            <returns>īpašības aprakstu</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.Property.Categories">
+            <summary>
+            Kategorijas, kas ir saistītas ar īpašību
+            </summary>
+            <returns>Kategorijas, kas ir saistītas ar īpašību</returns>
+        </member>
+        <member name="T:Sludinajumi.Api.Models.Translation">
+            <summary>
+            Tulkojuma struktūra
+            </summary>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.Translation.Id">
+            <summary>
+            Tulkojuma identifikators datubāzē
+            </summary>
+            <returns>tulkojuma identifikators</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.Translation.LanguageCode">
+            <summary>
+            Norāde uz tulkojuma valodas identifikatoru
+            </summary>
+            <returns>valodas identifikators</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.Translation.Language">
+            <summary>
+            Tulkojuma valoda
+            </summary>
+            <returns>valoda</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.Translation.Value">
+            <summary>
+            Tulkojums
+            </summary>
+            <returns>tulkojuma vērtība</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.Translation.CreatedAt">
+            <summary>
+            Tulkojuma izveidošanas datums
+            </summary>
+            <returns>izveidošanas datums</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.Translation.LastModifiedAt">
+            <summary>
+            Tulkojuma pēdējas rediģēšanas datums
+            </summary>
+            <returns>pēdējas rediģēšanas datums</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.TranslationEntry.CreatedAt">
+            <summary>
+            Tulkojumu izveidošanas datums
+            </summary>
+            <returns>izveidošanas datums</returns>
+        </member>
+        <member name="P:Sludinajumi.Api.Models.TranslationEntry.LastModifiedAt">
+            <summary>
+            Tulkojumu pēdējas rediģēšanas datums
+            </summary>
+            <returns>pēdējas rediģēšanas datums</returns>
+        </member>
+        <member name="T:Sludinajumi.Models.LoginViewModel">
+            <summary>
+            Lietotāja autorizācijas modele
+            </summary>
+        </member>
+        <member name="P:Sludinajumi.Models.LoginViewModel.UserName">
+            <summary>
+            Lietotāja autorizācijas vārds
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Sludinajumi.Models.LoginViewModel.Password">
+            <summary>
+            Lietotāja parole
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,33 @@
+@model Sludinajumi.Manage.Models.NewCategoryPropertyViewModel;
+@{
+    ViewData["Title"] = "Izveidot īpašību";
+}
+<div class="w3-container">
+    <h2>Izveidot jaunu īpašību</h2>
+    <p>Aizpildiet sekojošu formu, lai pievienot jaunu īpašību kategorijai.</p>
+    <form method="post" asp-controller="CategoryProperties" asp-action="AddProperty">
+        <input type="hidden" asp-for="@Model.CategoryId" />
+        <label asp-for="@Model.PropertyNeutralValue"></label>
+        <input asp-for="@Model.PropertyNeutralValue"
+            type="text"
+            placeholder="Īpašības nosaukums"
+            class="w3-input" />
+        <label asp-for="@Model.PropertyNeutralDescription"></label>
+        <input asp-for="@Model.PropertyNeutralDescription"
+            type="text"
+            placeholder="Īpašības apraksts"
+            class="w3-input" />
+        
+        <p>
+        <input asp-for="@Model.PropertyIsRequired"
+            type="checkbox"
+            checked="true"
+            class="w3-check" />
+        <label asp-for="@Model.PropertyIsRequired"></label>
+        </p>
+
+        <a asp-action="ListCategoryProperties" asp-route-UrlTitle="@Model.UrlTitle"
+            class="w3-button w3-theme">Atpakaļ</a>
+        <input type="submit" value="Izveidot!" class="w3-button w3-green w3-right" />
+    </form>
+</div>

@@ -1,0 +1,94 @@
+.modal-header h4 {
+    padding: 10px 10px;
+    margin: 0px;
+}
+
+.modal-header h4, .modal-header button {
+    line-height: 20px;
+    font-size: 20px;
+}
+
+.modal-header button {
+    padding: 10px 16px;
+}
+
+.modal-content {
+    padding: 10px;
+}
+
+.modal-content * {
+    text-align: justify;
+    margin: 4px 0px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.modal-buttons {
+    text-align: center;
+    padding: 5px;
+}
+
+.modal-buttons button i::after {
+    content: '';
+    margin-right: 3px;
+}
+
+.modal-buttons button {
+    margin: 5px;
+}
+
+.dialog-form {
+    display: none;
+}
+
+* {
+    outline: none;
+}
+
+span[contenteditable="true"], .editorNewValue {
+    font-style: italic;
+    outline: none;
+    cursor: text;
+}
+
+td a {
+    text-decoration: none;
+}
+
+th[colspan="2"], th.center {
+    text-align: center;
+}
+
+.linkRow {
+    text-align: center !important;
+    vertical-align: middle;
+}
+
+th, .link {
+    cursor: pointer;
+}
+
+.dialog-form {
+    display: none;
+}
+
+.validationError {
+    animation-name: validationErrorKeyframes;
+    animation-duration: 2s;
+}
+
+@keyframes validationErrorKeyframes {
+    0% {
+        border-color: #cacaca;
+        background-color: white;
+    }
+    50% {
+        border-color: red;
+        background-color: palevioletred;
+    }
+    100% {
+        border-color: #cacaca;
+        background-color: white;
+    }
+}
+

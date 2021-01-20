@@ -1,0 +1,35 @@
+<form method="post" asp-controller="Account" asp-action="Login" class="w3-section">
+
+	<header class="w3-container w3-theme w3-section">
+		<h1>Lietotāja pierakstīšanas</h1>
+		<p>Lai pierakstīties, ievadiet savu lietotāja vārdu un paroli. Tad nospiediet "Pierakstīties!".</p>
+	</header>
+
+	<!-- Region: Kļūdas, Problēmas un Informācija -->
+	@Html.ValidationSummary()
+	
+	<!-- Region: Pierakstīšanas forma -->
+	<label for="user-name">Lietotāja vārds</label>
+	<input type="text" name="userName" id="user-name"
+		placeholder="Jūsu lietotāja vārds"
+		class="w3-input"
+		required="required" />
+	
+	<label for="password">Parole</label>
+	<input type="password" name="password" id="password"
+		placeholder="*******"
+		class="w3-input"
+		required="required" />
+
+	<input type="submit"
+		value="Pierakstīties!"
+		class="w3-btn w3-theme w3-section" />
+
+    <div class="w3-panel w3-blue-grey">
+        <h3>Informācija!</h3>
+        <p>
+            Joprojām nav lietotāja konta? Reģistrē <a asp-controller="Account" asp-action="Register">šeit</a>.
+        </p>
+    </div>
+
+</form>

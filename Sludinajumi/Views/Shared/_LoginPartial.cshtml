@@ -1,0 +1,21 @@
+@using Microsoft.AspNetCore.Identity
+@using Sludinajumi.Api.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <a title="Lietotāja profils" asp-area="" asp-controller="Account" asp-action="Manage" class="w3-bar-item w3-button w3-right">
+        <i class="fa fa-user-circle"></i>
+    </a>
+    <a title="Izrakstīties!" asp-area="" asp-controller="Account" asp-action="Logout" class="w3-bar-item w3-button w3-right">
+        <i class="fa fa-sign-out"></i>
+    </a>
+}
+else
+{
+    <a title="Pierakstīties" asp-area="" asp-controller="Account" asp-action="Login" class="w3-bar-item w3-button w3-right">
+        <i class="fa fa-sign-in"></i>
+    </a>
+}

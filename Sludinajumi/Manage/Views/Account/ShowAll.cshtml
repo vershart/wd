@@ -1,0 +1,20 @@
+<div class="w3-container">
+    <h2>Sistēmas lietotāji</h2>
+    <table class="w3-table w3-striped w3-border w3-bordered w3-hoverable">
+        <tr class="w3-theme w3-hover-theme">
+            <th>Vārds</th>
+            <th>Uzvārds</th>
+            <th>Reģistrācijas datums</th>
+            <th>E-pasts</th>
+        </tr>
+        @foreach (var user in ViewBag.usersData)
+        {
+            <tr class="nav" onclick="navigateTo('/Manage/Account/Show?id=@user.Id');">
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.RegistrationDate</td>
+                <td>@user.EmailAdress</td>
+            </tr>
+        }
+    </ul>
+</div>

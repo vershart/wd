@@ -1,0 +1,31 @@
+<div class="w3-container">
+    <h2>Informācija un statistika</h2>
+    <p>
+        Šīni lapa ir redzama detalizēta statistika par visiem sistēmas lietotājiem,
+        kā arī pieejamas darbības ar lietotājiem.
+    </p>
+    <div class="w3-section">
+        <a asp-area="Manage" asp-controller="Account" asp-action="ShowAll" class="w3-btn w3-theme-d2">
+            <i class="fa fa-arrow-right"></i>
+            Pārvaldīt lietotājus
+        </a>
+    </div>
+    <ul class="w3-ul w3-border w3-hoverable">
+        <li class="w3-hover-theme-d5 w3-theme-d5 w3-small">
+            <h3>Statistika</h3>
+        </li>
+        <a asp-area="Manage" asp-controller="Account" asp-action="ShowAll">
+            <li class="w3-bar w3-small">
+                <i class="w3-bar-item w3-circle fa fa-address-card-o w3-xxxlarge" style="width:85px"></i>
+                <span class="w3-large">Visi sistēmas lietotāji</span>
+                <p>Kopā sistēmā reģistrēto lietotāju skaits ir @ViewBag.usersCount</p>
+            </li>
+        </a>
+        <li class="w3-bar w3-small">
+            <i class="w3-bar-item w3-circle fa fa-address-card-o w3-xxxlarge" style="width:85px"></i>
+            <span class="w3-large">Sistēmas administratori</span>
+            <p>Kopā sistēmā reģistrēto administratoru skaits ir @ViewBag.administratorsCount</p>
+        </li>
+    </ul>
+    <hr />
+</div>

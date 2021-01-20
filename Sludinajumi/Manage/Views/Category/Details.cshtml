@@ -1,0 +1,48 @@
+@model Sludinajumi.Api.Models.Category
+@{
+    ViewData["Title"] = "Kategorijas apraksts";
+}
+<h2>Apraksts</h2>
+<table class="w3-table w3-table-all">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Title)</th>
+        <td>@Model.Title</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Description)</th>
+        <td>@Model.Description</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.UrlTitle)</th>
+        <td>@Model.UrlTitle</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.ImagePath)</th>
+        <td>@Model.ImagePath</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Parent)</th>
+        <td>
+            @{
+                if (@Model.Parent == null) {
+                    <p>Nav (pamatkategorija)</p>
+                }
+                else {
+                    <a asp-action="Index" asp-route-UrlTitle="@Model.Parent.UrlTitle">
+                        @Model.Parent.Title
+                    </a>
+                }
+            }
+        </td>
+    </tr>
+</table>
+<div class="w3-section">
+    <a class="w3-btn w3-green" href="/Manage/Categories/">
+        <i class="fa fa-chevron-left "></i>
+        Atpakaļ
+    </a>
+    <a class="w3-btn w3-indigo" asp-action="Edit">
+        <i class="fa fa-pencil"></i>
+        Rediģēt kategoriju
+    </a>
+</div>

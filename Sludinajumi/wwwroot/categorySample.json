@@ -1,0 +1,48 @@
+{
+  "urlTitle": "Birds",
+  "title": "Putni",
+  "description": "Mani miļakie putniši!",
+  "imagePath": "/static/all_ads.jpg",
+  "parentId": 1,
+  "properties": [
+    {
+      "isRequired": true,
+      "name": {
+        "neutralValue": "Suga",
+        "neutralDescription": "Putnina suga",
+        "translations": [
+          {
+            "languageId": 1,
+            "value": "suga"
+          },
+          {
+            "languageId": 2,
+            "value": "сорт"
+          },
+          {
+            "languageId": 3,
+            "value": "american boy"
+          }
+        ]
+      },
+      "description": {
+        "neutralValue": "Putnina suga",
+        "neutralDescription": "Putnina suga",
+        "translations": [
+          {
+            "languageId": 1,
+            "value": "Собачье сердце"
+          },
+          {
+            "languageId": 2,
+            "value": "Gav gav gav"
+          },
+          {
+            "languageId": 3,
+            "value": "American dad"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+@using Sludinajumi.Api.Models;
+@using System.Collections.Generic;
+@using System.Linq;
+@model Sludinajumi.Api.Models.Category;
+@{
+    int index = 0;
+}
+<div class="w3-container w3-section">
+    @if (@Model.Subcategories.Count() > 0)
+    {
+        <h2>Kategorijas</h2>
+    }
+    @while (index < @Model.Subcategories.Count())
+    {
+        <div class="w3-row w3-margin-top w3-row-padding">
+        @for (int i = 0; i < 3; i++)
+        {
+            @if (index < @Model.Subcategories.Count()) {
+                <div class="w3-col w3-container s4 w3-cell-middle w3-mobile">
+                    <div class="w3-display-container category">
+                        <img src="@Model.Subcategories[index].ImagePath" class="category-image" style="width: 100%; height: 100%" />
+                        <a asp-controller="Ad" asp-action="ShowCategory" asp-route-UrlTitle="@Model.Subcategories[index].UrlTitle" class="category-overlay">
+                            <div class="text">
+                                @Model.Subcategories[index].Title
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+            index++;
+        }
+        </div>
+    }
+    <h2>Pēdējie sludinājumi</h2>
+    <ul class="w3-ul w3-hoverable">
+    @foreach (Ad ad in @Model.Ads)
+    {
+        <a asp-controller="Ad" asp-action="ShowAd" asp-route-Category="@ad.Category.Title" asp-route-AdId="@ad.Id">
+            <li>
+                <h3>@ad.Title kategorijā @ad.Category.Title</h3>
+                <p>@ad.Description</p>
+            </li>
+        </a>
+    }
+    </ul>
+</div>

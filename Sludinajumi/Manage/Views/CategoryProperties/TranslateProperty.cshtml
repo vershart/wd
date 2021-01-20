@@ -1,0 +1,34 @@
+@model Sludinajumi.Manage.Models.PropertyTranslationViewModel;
+@{
+    ViewData["Title"] = $"Īpašības [{Model.Property.Name.NeutralValue}] tulkošana";
+}
+<div class="w3-container w3-section">
+    <h2>Īpašības tulkošana @Model.Language.NeutralSelfName valodā</h2>
+    <p>Lūdzu, aizpildiet sekojošu formu un spiediet saglābāt, 
+        lai tulkot šo īpašību  @Model.Language.NeutralSelfName valodā.</p>
+    <form method="post" asp-action="TranslateProperty">
+        <input type="hidden" asp-for="@Model.Property.Id" />
+        <input type="hidden" asp-for="@Model.Language.Code" />
+        <label asp-for="TranslatedName"></label>
+        <input type="text"
+            asp-for="TranslatedName"
+            placeholder="@Model.Property.Name.NeutralValue"
+            class="w3-input" />
+        <label asp-for="TranslatedDescription"></label>
+        <input type="text"
+            asp-for="TranslatedDescription"
+            placeholder="@Model.Property.Description.NeutralValue"
+            class="w3-input" />
+        <p>
+            <input type="checkbox"
+                checked="true"
+                class="w3-check" />
+            <label>Visām parējam kategorijam arī?</label>
+        </p>
+
+        <a asp-action="ManagePropertyTranslations"
+            asp-route-CategoryId="1"
+            class="w3-button w3-indigo">Atpakaļ</a>
+        <input type="submit" value="Saglābāt!" class="w3-button w3-green w3-right" />
+    </form>
+</div>

@@ -1,0 +1,63 @@
+@model Sludinajumi.Manage.Models.CategoryPropertiesViewModel;
+@using Sludinajumi.Api.Models;
+@{
+    ViewData["Title"] = "Kategorijas īpašības";
+}
+<!-- Region: Navigation -->
+<nav class="w3-bar w3-theme">
+    <a asp-controller="CategoryProperties" asp-action="AddProperty" asp-route-UrlTitle="@Model.Category.UrlTitle"
+        class="w3-bar-item w3-button w3-hover-green">Jauna īpašība</a>  
+    <a asp-action="Edit" id="editCategoryLink"
+        class="w3-bar-item w3-button w3-hover-green">Rediģēt</a>
+    <span asp-action="Remove" id="removeCategoryLink"
+        class="w3-bar-item w3-button w3-hover-green">Dzēst</span>
+</nav>
+<!-- Region: Model -->
+<div class="w3-container">
+    <h2>Kategorijas īpašības</h2>
+    <p>Blah blah blah</p>
+    <table class="w3-table-all" id="propertiesTable">
+        <thead>
+            <tr class="w3-theme-l4" style="border-bottom: 0px">
+                <th colspan="5">
+                    <input class="w3-input w3-border w3-padding" type="search" placeholder="Meklēt īpašības pēc nosaukuma..." id="searchInputPropertiesTable">                        
+                </th>
+            </tr>
+            <tr class="w3-theme-l4">
+                <th style="width: 25%" title="Īpašības nosaukums">Nosaukums</th>
+                <th style="width: 40%;" title="Īpašības apraksts">Apraksts</th>
+                <th style="width: 10%;" title="Īpašība ir obligāta aizpildīšanai" class="center">Obligāta</th>
+                <th style="width: 25%" title="Darbības" colspan="2">Darbības</th>
+            </tr>
+        </thead>
+        <tbody class="w3-striped">
+            @foreach(var prop in @Model.Category.Properties)
+            {
+            <tr>
+                <td>@prop.Property.Name.NeutralValue</td>
+                <td>@prop.Property.Description.NeutralValue</td>
+                <td style="text-align: center;"><input type="checkbox" checked="@prop.IsRequired" class="w3-check" style="top: 0;" /></td>
+                <td><a class="linkRow" href="#">Izdzēst!</a></td>
+            </tr>
+            }   
+        </tbody>  
+        <tbody class="w3-striped">
+            <tr>
+                <th colspan="5">
+                    Citas īpašības
+                </th>
+            </tr>
+            @foreach(var prop in @Model.AvailableProperties)
+            {
+            <tr>
+                <td>@prop.Name.NeutralValue</td>
+                <td>@prop.Description.NeutralValue</td>
+                <td style="text-align: center;"><input type="checkbox" checked="@prop.IsRequired" disabled="disabled" class="w3-check" style="top: 0;" /></td>
+                <td><a class="linkRow" href="#">Pievienot!</a></td>
+                <td><a class="linkRow" href="#">Izdzēst!</a></td>
+            </tr>
+            }   
+        </tbody> 
+    </table>
+
+</div>

@@ -1,0 +1,108 @@
+<div class="w3-container">
+    <h2>Lietotāja profila rediģēšana - @ViewBag.userData.FullName</h2>
+    <p>
+        Lietotāja profila informācija un konta parvaldīšana.
+    </p>
+    <table class="w3-table w3-border w3-bordered w3-table-all">
+        <tr>
+            <th>Vārds</th>
+            <td>@ViewBag.userData.FirstName</td>
+        </tr>
+        <tr>
+            <th>Uzvārds</th>
+            <td>@ViewBag.userData.LastName</td>
+        </tr>
+        <tr>
+            <th>Lietotāju grupa</th>
+            <td>@ViewBag.userRoles</td>
+        </tr>
+        <tr>
+            <th>E-pasts</th>
+            <td>@ViewBag.userData.Email</td>
+        </tr>
+        <tr>
+            <th>Reģistrācijas datums</th>
+            <td>@ViewBag.userData.RegistrationDate</td>
+        </tr>
+        <tr>
+            <th>Dzimšanas datums</th>
+            <td>@ViewBag.userData.BirthDate.Date.ToString("d/MM/yyyy")</td>
+        </tr>
+    </table>
+    <hr />
+    <aside class="w3-section w3-center">
+        <button class="w3-btn w3-red" onclick="document.getElementById('removeAccountModal').style.display='block'">
+            <i class="fa fa-trash"></i>
+            Izdzēst kontu
+        </button>
+        <div id="removeAccountModal" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top">
+                <div class="w3-container w3-theme-l4">
+                    <h4 style="padding: 0px; margin: 4px">Izdzēst kontu</h4>
+                    <span onclick="document.getElementById('removeAccountModal').style.display='none'" class="w3-button w3-display-topright w3-hover-red">&times;</span>
+                </div>
+                <p class="w3-container" style="text-align: justify">
+                    Vai Jūs tiešām velāties izdzēst šī lietotāja kontu?
+                    @ViewBag.userData.FullName nevarēs piekļūt savam kontam un viss, kas ar viņu saistīts, pazūdīs no servera.
+                </p>
+                <div class="w3-bar" style="text-align: left">
+                    <a asp-action="Delete" asp-route-userId="@ViewBag.userData.Id" class="w3-button w3-red"><i class="fa fa-check"></i>  Izdzēst</a>
+                    <span onclick="document.getElementById('removeAccountModal').style.display='none'" asp-action="Delete" class="w3-button w3-theme"><i class="fa fa-remove"></i>  Atcelt</span>
+                </div>
+            </div>
+        </div>
+        <button class="w3-btn w3-indigo" onclick="document.getElementById('changeEmailModal').style.display='block'">
+            <i class="fa fa-pencil"></i>
+            Rediģēt e-pastu
+        </button>
+        <div id="changeEmailModal" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top">
+                <div class="w3-container w3-theme-l4">
+                    <h4 style="padding: 0px; margin: 4px">Izmainīt lietotāja e-pastu</h4>
+                    <span onclick="document.getElementById('changeEmailModal').style.display='none'" class="w3-button w3-display-topright w3-hover-red">&times;</span>
+                </div>
+                <form method="post" asp-action="ChangeEmail" class="w3-container">
+                    <p style="text-align: justify">
+                        Ja lietotājam ir grūtības konta piekļūšanai, Jūs pats varat izmainīt viņa e-pastu šeit. Lūgums ņemt verā, ka lietotājs
+                        nevarēs piekļūt sistēmai, izmantojot veco e-pastu.
+                    </p> 
+                    <p style="text-align: justify">Jauns e-pasts:</p>
+                    <input type="hidden" name="userId" value="@ViewBag.userData.Id" />
+                    <input type="email" name="newEmail" placeholder="Piemēram, example@example.com" class="w3-input w3-section" />
+                    <div class="w3-bar" style="text-align: left">
+                        <input type="submit" class="w3-button w3-green" value="Saglabāt!" />
+                        <span onclick="document.getElementById('changeEmailModal').style.display='none'" asp-action="Delete" class="w3-button w3-theme"><i class="fa fa-remove"></i>  Atcelt</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <button class="w3-btn w3-teal" onclick="document.getElementById('changeUserGroupModal').style.display = 'block'">
+            <i class="fa fa-users"></i>
+            Piešķirt lietotāja grupai
+        </button>
+        <div id="changeUserGroupModal" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top">
+                <div class="w3-container w3-theme-l4">
+                    <h4 style="padding: 0px; margin: 4px">Piešķirt lietotāja grupai</h4>
+                    <span onclick="document.getElementById('changeUserGroupModal').style.display='none'" class="w3-button w3-display-topright w3-hover-red">&times;</span>
+                </div>
+                <form method="post" asp-action="ChangeUserGroup" class="w3-container">
+                    <p style="text-align: justify">
+                        Jūs varat izmainīt lietotāja grupu šīm lietotājam. Tagad viņš ir lietotāju grupā "@ViewBag.userRoles".
+                    </p>
+                    <p style="text-align: justify">Jauna lietotāju grupa:</p>
+                    <select name="userRole" class="w3-input">
+                        <option value="Administrator">Administrators</option>
+                        <option value="User">Parastais lietotājs</option>
+                    </select>
+                    <input type="hidden" name="userId" value="@ViewBag.userData.Id" />
+                    <div class="w3-bar w3-section">
+                        <input type="submit" class="w3-button w3-green" value="Saglabāt!" />
+                        <button onclick="document.getElementById('changeUserGroupModal').style.display='none'" class="w3-button w3-red"><i class="fa fa-remove"></i>  Atcelt</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </aside>
+    <hr />
+</div>

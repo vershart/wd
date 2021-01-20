@@ -1,0 +1,26 @@
+﻿<Window x:Class="Checkers.WindowsClassic.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Checkers.WindowsClassic"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" SizeToContent="WidthAndHeight"
+        KeyDown="Window_KeyDown"
+        >
+
+    <Grid>
+        <DockPanel>
+            <Menu Width="Auto" Height="Auto" DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <MenuItem Header="Spēle">
+                    <MenuItem Header="Jauna Spēle" Click="MenuItem_Click_1" />
+                    <MenuItem Header="Atkārtot" Click="MenuItem_Click" InputGestureText="Ctrl+Z" />
+                    <Separator />
+                    <MenuItem Click="MenuItem_Click_2" Header="_Exit"/>
+                </MenuItem>
+            </Menu>
+            <Canvas DockPanel.Dock="Bottom" x:Name="Field" Width="512" Height="512" MouseLeftButtonUp="Field_MouseLeftButtonUp"/>
+
+        </DockPanel>
+    </Grid>
+</Window>

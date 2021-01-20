@@ -1,0 +1,47 @@
+@using Sludinajumi.Api.Models;
+@model Sludinajumi.Api.Models.Ad;
+<h2>Jauns sludinājums</h2>
+<p>Aizpildiet zemāk redzāmo formu, lai izvietot jaunu sludinājumu</p>
+<hr />
+<div asp-validation-summary="All" class="w3-panel w3-theme-d2"></div>
+<form method="post" asp-action="Edit">
+
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <label asp-for="CategoryId"></label>
+    <select asp-for="CategoryId" class="w3-input">
+    @foreach (Category cat in ViewBag.categories)
+    {
+        <option value="@cat.Id">@cat.Title</option>
+    }
+    </select>
+    
+    <label asp-for="Title"></label>
+    <input type="text" asp-for="Title"
+        placeholder="Sludinājuma teksts"
+        class="w3-input"
+        required="required" />
+
+    <label asp-for="Description"></label>
+    <textarea asp-for="Description" class="w3-input" placeholder="Sludinājuma teksts"></textarea>
+
+    <label asp-for="ItemLocation"></label>
+    <input type="text" asp-for="ItemLocation"
+        placeholder="Atrašanas vieta"
+        class="w3-input"
+        required="required" />
+
+    <label asp-for="LanguageId"></label>
+    <select asp-for="LanguageId" class="w3-input">
+    @foreach (Language lang in ViewBag.languages)
+    {
+        <option value="@lang.Id">@lang.SelfName</option>
+    }
+    </select>
+
+    <input type="hidden" asp-for="CreatedById" value="@Model.CreatedById" />
+
+    <input type="submit" value="Izvietot!"
+        class="w3-btn w3-theme w3-right w3-section" />
+
+</form>

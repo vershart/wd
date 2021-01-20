@@ -1,0 +1,6 @@
+{
+  "ConnectionStrings": {
+    //"MySQL": "Server=localhost;userid=root;pwd=qwe123asd;database=Sludinajumi;charset=utf8mb4"
+      "Sqlite": "Data Source=sludinajumi.db"
+  }
+}

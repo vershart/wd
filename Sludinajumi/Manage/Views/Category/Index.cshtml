@@ -1,0 +1,79 @@
+@using Sludinajumi.Api.Models;
+@model Sludinajumi.Manage.Models.CategoryViewModel;
+@{
+    ViewData["Title"] = "Kategoriju parvaldība";
+}
+<nav class="w3-bar w3-theme">
+    <a asp-action="New"
+        class="w3-bar-item w3-button w3-hover-green">Jauna kategorija</a>  
+    <a asp-action="Edit" id="editCategoryLink"
+        class="w3-bar-item w3-button w3-hover-green">Rediģēt</a>
+    <span asp-action="Remove" id="removeCategoryLink"
+        class="w3-bar-item w3-button w3-hover-green">Dzēst</span>
+</nav>
+<div class="w3-container">
+    @if (@Model.Category.Id == 1) {
+        <h2>Kategorijas</h2>
+        <p>
+            Šī ir pamatkategorijas. Jūs varat izveidot jaunu kategoriju, nospiežot "Jauna kategorija".
+            Izvelējoties kādu no apakškategorijām, Jūs varat to rediģēt vai dzēst; nospiežot uz izvelēto kategoriju vēlreiz, atvērsies kategorijas apraksts un tās apakškategorijas. 
+        </p>
+    }
+    else {
+        @Html.Partial("Details", @Model.Category);
+    }
+    <hr />
+    <h2>Apakškategorijas</h2>
+    @foreach (Category category in @Model.Category.Subcategories)
+    {
+        <div class="w3-bar w3-small w3-card w3-section w3-hover-pale-green category-card" data-ref="@category.UrlTitle">
+            <img class="w3-bar-item w3-circle w3-xxxlarge" style="width: 135px; height: 90px;" src="@category.ImagePath" />
+            <span class="w3-large">@category.Title</span>
+            <p>@category.Description</p>
+            <div>
+                <span>Sludinājumu skaits: @category.AdsCount;</span>
+                <span>apakškategoriju skaits: @category.SubcategoriesCount</span>
+            </div>
+        </div>
+    }
+</div>
+<div id="removeCategoryModal" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top">
+        <div class="w3-container w3-theme-l4">
+            <h4 style="padding: 0px; margin: 4px">Izdzēst kategoriju</h4>
+            <span onclick="document.getElementById('removeCategoryModal').style.display='none'" class="w3-button w3-display-topright w3-hover-red">&times;</span>
+        </div>
+        <div class="w3-container">
+            <p style="text-align: justify">
+                Vai Jūs tiešām velāties izdzēst šo?
+                Visa informācija, sludinājumi un apakškategorijas, kas ir saistīti ar šo kategoriju pazūdis neatgriezeniski!
+            </p>
+            <div class="w3-bar w3-section" style="text-align: right">
+                <a id="approveCategoryRemove" class="w3-button w3-red"><i class="fa fa-check"></i>  Izdzēst</a>
+                <span onclick="document.getElementById('removeCategoryModal').style.display='none'" class="w3-button w3-theme"><i class="fa fa-remove"></i>  Atcelt</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="w3-modal">
+    <div class="w3-modal-content w3-animate-top">
+        <div class="modal-header">
+            <h4>Modal title</h4>
+            <span>&times;</span>
+        </div>
+        <div class="modal-content">
+            <p>Heeloo</p>
+        </div>
+        <div class="w3-bar w3-section modal-buttons">
+            <button class="w3-button">
+                <i class="fa fa-check"></i>
+                <span>Approve</span>
+            </button>
+            <button class="w3-button">
+                <i class="fa fa-check"></i>
+                <span>Deny</span>
+            </button>
+        </div>
+    </div>
+</div>
